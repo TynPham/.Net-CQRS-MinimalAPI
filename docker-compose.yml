@@ -1,0 +1,6 @@
+﻿services:
+  cqrs-minimalapi:
+    image: cqrs-minimalapi
+    build:
+      context: .
+      dockerfile: Dockerfile
