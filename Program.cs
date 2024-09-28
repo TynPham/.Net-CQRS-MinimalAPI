@@ -1,5 +1,8 @@
+using System.Reflection;
+using CQRS_MinimalAPI.Base.Behavior;
 using CQRS_MinimalAPI.Base.Extentions;
 using CQRS_MinimalAPI.Context;
+using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,7 +17,13 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
     builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddScoped<AppDbContext>();
 builder.Services.AddScoped<ReadOnlyDataContext>();
-builder.Services.AddMediatR(typeof(Program).Assembly);
+builder.Services.AddMediatR(config =>
+{
+    config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+    
+    config.AddOpenBehavior(typeof(CommandValidationBehavior<,>));
+});
+builder.Services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), includeInternalTypes: true);
 
 var app = builder.Build();
 app.MapEndpoints();

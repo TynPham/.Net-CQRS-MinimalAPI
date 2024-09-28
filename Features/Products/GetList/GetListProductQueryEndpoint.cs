@@ -16,6 +16,6 @@ internal class GetListProductQueryEndpoint : IEndpointBuilder
       {
          var result = await mediator.Send(query, cancellationToken);
          return result.ToHttpResult();
-      }).Produces<List<GetListProductResponse>>().ProducesProblem(StatusCodes.Status400BadRequest);
+      }).Produces<List<GetListProductResponse>>().ProducesProblem(StatusCodes.Status400BadRequest).WithTags("Products");
    }
 }

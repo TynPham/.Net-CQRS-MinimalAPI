@@ -10,6 +10,8 @@ This project is built with C# and .NET 8.0 SDK
 - MediatR
 - MediatR.Extensions.Microsoft.DependencyInjection
 - Mapster
+- FluentValidation
+- FluentValidation.DependencyInjectionExtensions
 
 ## Template:
 
