@@ -21,4 +21,11 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Features\Users\Create\" />
+      <Folder Include="Features\Users\Delete\" />
+      <Folder Include="Features\Users\Get\" />
+      <Folder Include="Features\Users\Update\" />
+    </ItemGroup>
+
 </Project>
